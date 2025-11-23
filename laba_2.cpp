@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 using namespace std;
 
@@ -144,8 +144,8 @@ private:
     }
 
     static void merge_runs(int arr[], Run runs[], int& runs_count, int i, int j) {
-        cout << "Ñëèâàåì ğàíû: [" << runs[i].start << "-" << runs[i].start + runs[i].length - 1
-            << "] è [" << runs[j].start << "-" << runs[j].start + runs[j].length - 1 << "]" << endl;
+        cout << "Ğ¡Ğ»Ğ¸Ğ²Ğ°ĞµĞ¼ Ñ€Ğ°Ğ½Ñ‹: [" << runs[i].start << "-" << runs[i].start + runs[i].length - 1
+            << "] Ğ¸ [" << runs[j].start << "-" << runs[j].start + runs[j].length - 1 << "]" << endl;
 
         int start1 = runs[i].start;
         int end1 = runs[i].start + runs[i].length - 1;
@@ -165,14 +165,14 @@ private:
 public:
     static int compute_minrun(int n) {
         int number_of_bits = decimal_to_binary(n).length();
-        cout << "n = " << n << " (äâîè÷íîå: " << decimal_to_binary(n) << ")" << endl;
+        cout << "n = " << n << " (Ğ´Ğ²Ğ¾Ğ¸Ñ‡Ğ½Ğ¾Ğµ: " << decimal_to_binary(n) << ")" << endl;
 
         int high6bits = n >> (number_of_bits - 6);
-        cout << "Ñòàğøèå 6 áèò: " << decimal_to_binary(high6bits) << " = " << high6bits << endl;
+        cout << "Ğ¡Ñ‚Ğ°Ñ€ÑˆĞ¸Ğµ 6 Ğ±Ğ¸Ñ‚: " << decimal_to_binary(high6bits) << " = " << high6bits << endl;
 
         int shift_amount = number_of_bits - 6;
         int low6bits = n & ((1 << shift_amount) - 1);
-        cout << "Îñòàâøèåñÿ áèòû: " << decimal_to_binary(low6bits) << " = " << low6bits << endl;
+        cout << "ĞÑÑ‚Ğ°Ğ²ÑˆĞ¸ĞµÑÑ Ğ±Ğ¸Ñ‚Ñ‹: " << decimal_to_binary(low6bits) << " = " << low6bits << endl;
 
         bool has_ones = (low6bits != 0);
         int minrun = high6bits + (has_ones ? 1 : 0);
@@ -180,11 +180,11 @@ public:
 
         if (minrun < 32) {
             minrun = 32;
-            cout << "Êîğğåêòèğóåì äî " << minrun << " (ñëèøêîì ìàëî)" << endl;
+            cout << "ĞšĞ¾Ñ€Ñ€ĞµĞºÑ‚Ğ¸Ñ€ÑƒĞµĞ¼ Ğ´Ğ¾ " << minrun << " (ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ¼Ğ°Ğ»Ğ¾)" << endl;
         }
         if (minrun > 64) {
             minrun = 64;
-            cout << "Êîğğåêòèğóåì äî " << minrun << " (ñëèøêîì ìíîãî)" << endl;
+            cout << "ĞšĞ¾Ñ€Ñ€ĞµĞºÑ‚Ğ¸Ñ€ÑƒĞµĞ¼ Ğ´Ğ¾ " << minrun << " (ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ¼Ğ½Ğ¾Ğ³Ğ¾)" << endl;
         }
 
         return minrun;
@@ -231,7 +231,7 @@ public:
         if (n <= 1) return;
 
         int minrun = compute_minrun(n);
-        cout << "Ğàçìåğ ìàññèâà: " << n << ", Minrun: " << minrun << endl;
+        cout << "Ğ Ğ°Ğ·Ğ¼ĞµÑ€ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ°: " << n << ", Minrun: " << minrun << endl;
 
         Run runs[MAX_RUNS];
         int runs_count = 0;
@@ -242,11 +242,11 @@ public:
             current = find_run(arr, n, run_start);
             int run_length = current - run_start;
 
-            cout << "Íàéäåí run: [" << run_start << "-" << current - 1 << "], äëèíà: " << run_length << endl;
+            cout << "ĞĞ°Ğ¹Ğ´ĞµĞ½ run: [" << run_start << "-" << current - 1 << "], Ğ´Ğ»Ğ¸Ğ½Ğ°: " << run_length << endl;
 
             if (run_length < minrun) {
                 int new_end = (run_start + minrun < n) ? run_start + minrun : n;
-                cout << "Ğàñøèğÿåì äî " << new_end << " ıëåìåíòîâ" << endl;
+                cout << "Ğ Ğ°ÑÑˆĞ¸Ñ€ÑĞµĞ¼ Ğ´Ğ¾ " << new_end << " ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²" << endl;
 
                 insertion_sort(arr, run_start, new_end - 1);
 
@@ -257,7 +257,7 @@ public:
             if (runs_count < MAX_RUNS) {
                 runs[runs_count] = Run(run_start, run_length);
                 runs_count++;
-                cout << "Äîáàâèëè â ñòåê. Âñåãî run: " << runs_count << endl;
+                cout << "Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ¸Ğ»Ğ¸ Ğ² ÑÑ‚ĞµĞº. Ğ’ÑĞµĞ³Ğ¾ run: " << runs_count << endl;
             }
 
             merge_collapse(arr, runs, runs_count);
@@ -273,11 +273,23 @@ public:
 int main() {
     setlocale(0, "");
 
-    int arr[] = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19,  
-             2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
-    int n = sizeof(arr) / sizeof(arr[0]);
+    int n;
+    cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²: ";
+    cin >> n;
 
-    cout << "Èñõîäíûé ìàññèâ: ";
+    if (n <= 0) {
+        cout << "ĞÑˆĞ¸Ğ±ĞºĞ°: ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ² Ğ´Ğ¾Ğ»Ğ¶Ğ½Ğ¾ Ğ±Ñ‹Ñ‚ÑŒ Ğ¿Ğ¾Ğ»Ğ¾Ğ¶Ğ¸Ñ‚ĞµĞ»ÑŒĞ½Ñ‹Ğ¼!" << endl;
+        return 1;
+    }
+
+    int* arr = new int[n];
+
+    cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ " << n << " ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ² Ñ‡ĞµÑ€ĞµĞ· Ğ¿Ñ€Ğ¾Ğ±ĞµĞ»: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "\nĞ˜ÑÑ…Ğ¾Ğ´Ğ½Ñ‹Ğ¹ Ğ¼Ğ°ÑÑĞ¸Ğ²: ";
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
@@ -285,11 +297,21 @@ int main() {
 
     timsort::sort(arr, n);
 
-    cout << "\nÎòñîğòèğîâàííûé ìàññèâ: ";
+    cout << "\nĞÑ‚ÑĞ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ½Ñ‹Ğ¹ Ğ¼Ğ°ÑÑĞ¸Ğ²: ";
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
     cout << endl;
+
+    bool is_sorted = true;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < arr[i - 1]) {
+            is_sorted = false;
+            break;
+        }
+    }
+
+    delete[] arr;
 
     return 0;
 }
